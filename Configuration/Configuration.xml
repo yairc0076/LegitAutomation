@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Enviroment>
+    <!--Timeout-->
+    <Timeout>5</Timeout>
+
+    <!--Web-->
+    <PlatformName>web</PlatformName>
+    <BrowserName>chrome</BrowserName>
+
+    <!--Data Driven Testing-->
+    <DDTFile>.DDTFiles/AddToCart.csv</DDTFile>
+
+    <!-- Properties-->
+    <username>yairc0076@gmail.com</username>
+    <password>ARcQB22f8Kueeqa!</password>
+    <url>https://main.d2t1pk7fjag8u6.amplifyapp.com/</url>
+
+
+</Enviroment>

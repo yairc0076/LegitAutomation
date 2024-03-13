@@ -1,0 +1,27 @@
+Bug Report
+
+Title: High Bug - Checkout Process Bypass Without Visiting Shopping Cart
+
+Severity: High
+
+Description:
+
+Summary:
+The checkout process can be completed without visiting and verifying the shopping cart page, allowing users to place orders without reviewing their items. This poses a significant risk both in terms of user experience and potential security concerns.
+
+Steps to Reproduce:
+
+Navigate to the homepage.
+Add a product to the cart.
+Proceed to the checkout page without visiting the shopping cart.
+Enter shipping address information .
+Complete the checkout process.
+Expected Behavior:
+The application should enforce a mandatory step to visit the shopping cart before proceeding to the checkout page. This ensures users review their selected items, preventing unintentional or fraudulent orders.
+
+Impact:
+
+User Experience: Users may unintentionally skip the shopping cart step, leading to confusion and potential order inaccuracies.
+Security: Customers are unable to verify the contents of their order before completion, which may result in unauthorized or incorrect charges.
+Additional Details:
+This issue not only impacts the clarity and accuracy of user transactions but also presents potential security risks. The application lacks a crucial step in the checkout process, allowing users to proceed to order placement without verifying the contents of their shopping cart.
