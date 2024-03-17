@@ -4,10 +4,10 @@ on:
   schedule:
     # Schedule the workflow to run at 10:00 AM UTC every day
     - cron: '0 10 * * *'
-  on:
-    push:
-      branches:
-        - master
+
+  push:
+    branches:
+      - master
 
 jobs:
   build-and-test:
