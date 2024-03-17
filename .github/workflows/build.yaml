@@ -17,5 +17,5 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Run Maven Tests
-        run: mvn test -Pweb
+      - name: Run Maven Tests in Headless Mode
+        run:  mvn test -Pweb -Dheadless=true

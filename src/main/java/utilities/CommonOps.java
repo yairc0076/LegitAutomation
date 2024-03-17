@@ -95,6 +95,8 @@ public class CommonOps extends Base {
         // WebDriverManager.chromedriver().driverVersion("107").setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
+
         ChromeDriver driver = new ChromeDriver(options);
 
 
