@@ -1,24 +1,41 @@
-name: Daily Java Tests
+name: Maven Tests with Headless Chrome
 
 on:
-  schedule:
-    # Schedule the workflow to run at 10:00 AM UTC every day
-    - cron: '0 10 * * *'
-
   push:
     branches:
-      - master
+      - master # Trigger the workflow on push events to the master branch
+  workflow_dispatch: # Allows the workflow to be manually triggered
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    container:
-      image: maven:3.8.4-openjdk-11 # Use a Docker image with Maven and OpenJDK 11
+    services:
+      chrome:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Run Maven Tests in Headless Mode
-        run:  mvn test -Pweb -Dheadless=true
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      - name: Run Maven Tests
+        run: mvn test -Pweb
+        env:
+          SELENIUM_HOST: localhost
+          SELENIUM_PORT: 4444
