@@ -1,0 +1,40 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn clean test -Pweb
+
+    - name: Archive Allure results
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-results
+        path: target/allure-results
+
+    - name: Generate Allure report
+      uses: allure-framework/allure-github-action@v2.0.5
+      with:
+        allure-commandline-version: '2.13.1'
+
+    - name: Archive Allure report
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-report
+        path: allure-report
