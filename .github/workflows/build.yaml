@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - master # Trigger the workflow on push events to the master branch
-  workflow_dispatch: # Allows the workflow to be manually triggered
+  schedule:
+    # Schedule the workflow to run at 10:00 AM UTC every day
+    - cron: '0 10 * * *'
 
 jobs:
   build-and-test:
